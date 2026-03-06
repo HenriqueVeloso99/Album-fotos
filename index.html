@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="video-container">
+        <video autoplay muted loop playsinline id="bgvideo">
+            <source id="videoSource" src="videos/duna.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                <ul class="navbar-nav">
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+
+                            Temas: <span id="temaAtual" class="temaAtual">Duna</span>
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" data-video="videos/duna.mp4">Duna</a></li>
+                            <li><a class="dropdown-item" data-video="videos/dragao.mp4">Como treinar o seu Dragão</a>
+                            </li>
+                            <li><a class="dropdown-item" data-video="videos/starwars.mp4">Star Wars</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div id="buttons-container">
+                <div id="mapas" class="button-menu">
+                    <img type="button" class="mapas-icon" src="imagens/map_icon.png">
+                    <span class="btn-label">Mapas</span>
+                </div>
+
+                <div id="presentes" class="button-menu">
+                    <img src="imagens/gift_icon.png">
+                    <span class="btn-label">Presentes</span>
+                </div>
+
+                <div id="cartas" class="button-menu">
+                    <img type="button" class="carta-icon" src="imagens/letters_icon.png">
+                    <span class="btn-label">Cartas</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="album-div" class="fechado">
+
+        <div id="album-container" class="album-container">
+            <img id="album" class="album-img" src="imagens/album-fechado.png" data-fechado="imagens/album-fechado.png"
+                data-aberto="imagens/album-aberto.png">
+        </div>
+    </div>
+
+    <div id="visibilidade" class="button">
+        <img type="button" class="visib-icon" src="imagens/eye_icon.png">
+    </div>
+
+    <script type="module" src="js/bootstrap.js"></script>
+    <script>
+
+        //Troca de video tema
+        function trocarVideo(caminhoDoVideo) {
+            const video = document.getElementById('bgvideo');
+            const source = document.getElementById('videoSource');
+
+            source.src = caminhoDoVideo;
+
+            video.load();
+
+            video.play();
+        }
+
+        //Navbar
+        const temaAtual = document.getElementById("temaAtual");
+        const itensTema = document.querySelectorAll(".dropdown-item");
+
+        itensTema.forEach(item => {
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                const nomeTema = item.textContent;
+                const video = item.dataset.video;
+
+                temaAtual.textContent = nomeTema;
+
+                trocarVideo(video);
+            });
+        });
+
+        //Album aberto e fechado
+        const album = document.getElementById("album");
+        const container = document.getElementById("album-container");
+
+        let aberto = false;
+
+        album.addEventListener("click", () => {
+
+            if (aberto == true) { return }
+
+            album.classList.add("fade");
+
+            setTimeout(() => {
+
+                aberto = true;
+
+                album.src = aberto
+                    ? album.dataset.aberto
+                    : album.dataset.fechado;
+
+                album.classList.remove("fade");
+                album.classList.add("aberto");
+                container.classList.add("aberto")
+
+            }, 200);
+
+        });
+
+        //Botoes ->
+
+        //Visibilidade
+        const btn_visiblity = document.getElementById("visibilidade");
+
+        let visibilidade = true;
+
+        btn_visiblity.addEventListener("click", () => {
+
+            visibilidade = !visibilidade;
+
+            container.classList.toggle("hidden");
+
+        });
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
