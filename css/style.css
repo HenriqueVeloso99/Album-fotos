@@ -20,33 +20,33 @@ html {
 }
 
 /*--Navbar--*/
-.dropdown-toggle{
+.dropdown-toggle {
   font-size: 20px !important;
   font-weight: 600 !important;
 }
 
-.dropdown-item{
+.dropdown-item {
   cursor: pointer;
   transition: 0.6s !important;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   background-color: rgb(226, 223, 223) !important;
   color: #a50404 !important;
 }
 
-.temaAtual{
+.temaAtual {
   padding-left: 10px;
   font-size: 20px;
   transition: 0.6s;
 }
 
-.temaAtual:hover{
+.temaAtual:hover {
   color: #a50404;
 }
 
 /*--Botoes-*/
-.button{
+.button {
   position: absolute;
 
   width: 48px;
@@ -64,34 +64,35 @@ html {
 
   transition: all 0.2s ease;
 
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-.button:hover{
+.button:hover {
   background: #e2e2e2;
   transform: scale(1.05);
 }
 
-.button img{
+.button img {
   width: 22px;
   height: 22px;
 }
 
 /*Visibilidade btn*/
-#visibilidade{
+#visibilidade {
   right: 1.7%;
   bottom: 3%;
 }
 
 /*--Botoes Navbar--*/
-#buttons-container{
+#buttons-container {
   display: flex;
   gap: 20px;
   align-items: center;
 
   margin-right: 1.5%;
 }
-.button-menu{
+
+.button-menu {
   position: relative;
 
   width: 40px;
@@ -109,13 +110,13 @@ html {
   transition: all 0.2s ease;
 }
 
-.button-menu img{
+.button-menu img {
   width: 22px;
   height: 22px;
 }
 
 /* label escondido */
-.btn-label{
+.btn-label {
   position: absolute;
   bottom: -20px;
 
@@ -129,12 +130,12 @@ html {
 }
 
 /* aparece no hover */
-.button-menu:hover .btn-label{
+.button-menu:hover .btn-label {
   opacity: 1;
   transform: translateY(0);
 }
 
-.button-menu:hover{
+.button-menu:hover {
   background: #e2e2e2;
   transform: translateY(-1px) scale(1.05);
 }
@@ -148,7 +149,8 @@ html {
   margin-top: 10vh;
   transition: opacity 0.4s ease;
 }
-.album-container.hidden{
+
+.album-container.hidden {
   opacity: 0;
   pointer-events: none;
 }
@@ -160,15 +162,23 @@ html {
 }
 
 .album-img.aberto {
-  width: 80vw !important;
-  height: 75vh !important;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .album-container.aberto {
-  width: 80vw;
-  z-index: -1;
+  width: auto;
+  /* muda para auto */
+  min-width: 60vw;
+  /* largura mínima */
+  max-width: 85vw;
+  /* largura máxima */
+  height: 78vh;
 
-  margin-left: 10vw;
+  position: relative;
+  margin: 10vh auto 0 auto;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -177,11 +187,280 @@ html {
   border: 8px solid #3b1c0d;
   border-radius: 8px;
 
-  box-shadow:
-    inset 0 0 20px rgba(0,0,0,0.4),
-    0 10px 25px rgba(0,0,0,0.5);;
+  /* Padding igual dos dois lados */
+  padding: 10px 30px;
+}
+
+.album-img.aberto {
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .album-img.fade {
   opacity: 0;
+}
+
+.album-nav {
+  display: none;
+}
+
+.album-container.aberto .album-nav {
+  display: block;
+}
+
+.album-nav button {
+  position: absolute;
+  bottom: 10px;
+  color: whitesmoke;
+  background: none;
+  border: none;
+
+  padding: 6px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.album-nav button:hover {
+
+  transform: scale(1.1);
+  transform: translateY(-7%);
+}
+
+#paginaAnterior {
+  left: 10px;
+}
+
+#paginaProxima {
+  right: 10px;
+}
+
+/*Fotos*/
+.album-pages{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+
+  width:70%;
+  height:60%;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  justify-items:center;
+  pointer-events: none;
+
+  z-index:5;
+}
+
+.album-container.aberto .album-pages{
+  pointer-events: auto;
+}
+
+.foto-slot{
+  width:260px;
+  height:260px;
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  border-radius:8px;
+}
+
+/* ----- MENU PRINCIPAL ----- */
+.menu-main {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 650px;
+  height: 520px;
+
+  background: rgba(25, 20, 40, 0.9);
+  border: 8px solid #0a0a0a;
+  border-radius: 40px;
+
+  padding: 30px;
+
+  display: none;
+}
+
+.menu-main.open {
+  display: block;
+}
+
+.menu-section {
+  display: none;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.menu-section.active {
+  display: block;
+}
+
+.menu-title {
+  color: white;
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 25px;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.menu-grid.mapas {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.menu-card {
+  height: 70px;
+  background: #3b3b3b;
+  border-radius: 25px;
+  border: 3px solid black;
+
+  transition: 0.2s;
+}
+
+.menu-card:hover {
+  transform: scale(1.05);
+}
+
+.menu-letter {
+  height: 60px;
+  padding-bottom: 10px;
+  background: #3b3b3b;
+  border-radius: 30px;
+  border: 3px solid black;
+}
+
+.menu-letter:hover {
+  transform: scale(1.05);
+}
+
+/* botão fechar menu */
+.menu-close {
+  position: absolute;
+
+  top: 15px;
+  right: 20px;
+
+  font-size: 28px;
+  font-weight: bold;
+
+  color: white;
+
+  cursor: pointer;
+  transition: 0.2s;
+
+  user-select: none;
+}
+
+.menu-close:hover {
+  transform: scale(1.2);
+  color: #a50404;
+}
+
+/* Scroll do menu */
+.menu-section::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* trilho */
+.menu-section::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+/* barra */
+.menu-section::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 10px;
+}
+
+/* hover */
+.menu-section::-webkit-scrollbar-thumb:hover {
+  background: #e0e0e0;
+}
+
+
+/*--Fotos Album--*/
+.modal {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(8px);
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 100;
+
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-content {
+
+  width: 650px;
+  height: 420px;
+
+  background: rgba(25, 20, 40, 0.95);
+
+  border-radius: 35px;
+  border: 8px solid black;
+
+  padding: 30px;
+
+  position: relative;
+
+}
+
+.modal-body {
+
+  display: flex;
+  gap: 30px;
+
+}
+
+.modal-close {
+
+  position: absolute;
+  top: 15px;
+  right: 20px;
+
+  font-size: 28px;
+  cursor: pointer;
+
+}
+
+.modal-close:hover {
+  transform: scale(1.2);
 }

@@ -73,6 +73,20 @@
         <div id="album-container" class="album-container">
             <img id="album" class="album-img" src="imagens/album-fechado.png" data-fechado="imagens/album-fechado.png"
                 data-aberto="imagens/album-aberto.png">
+
+            <div class="album-pages">
+
+                <div class="foto-slot" data-index="0"></div>
+                <div class="foto-slot" data-index="1"></div>
+
+            </div>
+
+            <div class="album-nav">
+
+                <button id="paginaAnterior">⬅ Página Anterior</button>
+                <button id="paginaProxima">Página Seguinte ➡</button>
+
+            </div>
         </div>
     </div>
 
@@ -80,7 +94,80 @@
         <img type="button" class="visib-icon" src="imagens/eye_icon.png">
     </div>
 
+    <div id="menu-main" class="menu-main">
+
+        <div id="menu-close" class="menu-close">✕</div> <!-- FECHAR -->
+
+        <!-- PRESENTES -->
+        <div id="menu-presentes" class="menu-section active">
+
+            <h1 class="menu-title">Presentes</h1>
+
+            <div class="menu-grid">
+                <div class="menu-card"></div>
+                <div class="menu-card"></div>
+                <div class="menu-card"></div>
+                <div class="menu-card"></div>
+                <div class="menu-card"></div>
+                <div class="menu-card"></div>
+            </div>
+        </div>
+
+        <!-- MAPAS -->
+        <div id="menu-mapas" class="menu-section">
+            <h1 class="menu-title">Mapas</h1>
+
+            <div class="menu-grid mapas">
+                <div class="menu-card"></div>
+                <div class="menu-card"></div>
+                <div class="menu-card"></div>
+                <div class="menu-card"></div>
+            </div>
+        </div>
+
+        <!-- CARTAS -->
+        <div id="menu-cartas" class="menu-section">
+            <h1 class="menu-title">Cartas</h1>
+
+            <div class="menu-list">
+                <div class="menu-letter"></div>
+                <div class="menu-letter"></div>
+                <div class="menu-letter"></div>
+                <div class="menu-letter"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="modal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="menu-close">✕</div>
+
+            <div class="modal-body">
+
+                <img id="modal-img">
+
+                <div class="modal-text">
+
+                    <h1 id="modal-titulo"></h1>
+
+                    <p id="modal-data"></p>
+                    <p id="modal-local"></p>
+                    <p id="modal-motivo"></p>
+
+                    <p id="modal-desc"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
     <script type="module" src="js/bootstrap.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script>
 
         //Troca de video tema
@@ -128,21 +215,19 @@
 
                 aberto = true;
 
-                album.src = aberto
-                    ? album.dataset.aberto
-                    : album.dataset.fechado;
+                album.src = album.dataset.aberto;
 
                 album.classList.remove("fade");
                 album.classList.add("aberto");
-                container.classList.add("aberto")
+                container.classList.add("aberto");
+
+                renderAlbum();
 
             }, 200);
 
         });
 
-        //Botoes ->
-
-        //Visibilidade
+        //Botao Visibilidade
         const btn_visiblity = document.getElementById("visibilidade");
 
         let visibilidade = true;
@@ -152,6 +237,185 @@
             visibilidade = !visibilidade;
 
             container.classList.toggle("hidden");
+
+        });
+
+        //Botoes Menu->
+        const menuMain = document.getElementById("menu-main");
+
+        const menuPresentes = document.getElementById("menu-presentes");
+        const menuMapas = document.getElementById("menu-mapas");
+        const menuCartas = document.getElementById("menu-cartas");
+
+        function abrirMenu(menu) {
+
+            menuMain.classList.add("open");
+
+            menuPresentes.classList.remove("active");
+            menuMapas.classList.remove("active");
+            menuCartas.classList.remove("active");
+
+            menu.classList.add("active");
+        }
+
+        document.getElementById("presentes").onclick = () => abrirMenu(menuPresentes);
+        document.getElementById("mapas").onclick = () => abrirMenu(menuMapas);
+        document.getElementById("cartas").onclick = () => abrirMenu(menuCartas);
+
+        const menuClose = document.getElementById("menu-close");
+
+        menuClose.onclick = () => {
+            menuMain.classList.remove("open");
+        };
+
+        //Sistemas de páginas
+        let paginaAtual = 0;
+
+        function renderAlbum() {
+
+            const esquerda = dados.fotos[paginaAtual];
+            const direita = dados.fotos[paginaAtual + 1];
+
+            const slots = document.querySelectorAll(".foto-slot");
+
+            if (esquerda) {
+                slots[0].style.backgroundImage = `url(${esquerda.img})`;
+            }
+
+            if (direita) {
+                slots[1].style.backgroundImage = `url(${direita.img})`;
+            }
+
+        }
+
+        //Sistemas de itens menu
+        function renderPresentes() {
+
+            const container = document.querySelector("#menu-presentes .menu-grid");
+            container.innerHTML = "";
+
+            dados.presentes.forEach(presente => {
+
+                const card = document.createElement("div");
+                card.classList.add("menu-card");
+
+                card.style.backgroundImage = `url(${presente.img})`;
+                card.style.backgroundSize = "cover";
+
+                card.onclick = () => abrirModal(presente);
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+        function renderMapas() {
+
+            const container = document.querySelector("#menu-mapas .menu-grid");
+            container.innerHTML = "";
+
+            dados.mapas.forEach(mapa => {
+
+                const card = document.createElement("div");
+                card.classList.add("menu-card");
+
+                card.style.backgroundImage = `url(${mapa.img})`;
+                card.style.backgroundSize = "cover";
+
+                card.onclick = () => abrirModal(mapa);
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+        function renderCartas() {
+
+            const container = document.querySelector("#menu-cartas .menu-list");
+            container.innerHTML = "";
+
+            dados.cartas.forEach(carta => {
+
+                const item = document.createElement("div");
+                item.classList.add("menu-letter");
+
+                item.textContent = carta.titulo;
+
+                item.onclick = () => abrirModal(carta);
+
+                container.appendChild(item);
+
+            });
+
+        }
+
+        renderAlbum();
+        renderPresentes();
+        renderMapas();
+        renderCartas();
+
+        document.getElementById("paginaProxima").onclick = () => {
+
+            if (!aberto) return;
+
+            if (paginaAtual + 2 < dados.fotos.length) {
+                paginaAtual += 2;
+                renderAlbum();
+            }
+
+        };
+
+        document.getElementById("paginaAnterior").onclick = () => {
+
+            if (!aberto) return;
+
+            if (paginaAtual - 2 >= 0) {
+                paginaAtual -= 2;
+                renderAlbum();
+            }
+
+        };
+
+        //Abrir foto
+        const modal = document.getElementById("modal");
+
+        document.querySelectorAll(".foto-slot").forEach((slot, i) => {
+
+            slot.addEventListener("click", () => {
+
+                const foto = dados.fotos[paginaAtual + i];
+                if(!foto) return;
+
+                document.getElementById("modal-img").src = foto.img;
+
+                document.getElementById("modal-data").textContent = foto.data;
+                document.getElementById("modal-local").textContent = foto.local;
+                document.getElementById("modal-motivo").textContent = foto.motivo;
+                document.getElementById("modal-desc").textContent = foto.texto;
+
+                modal.classList.add("open");
+
+            });
+
+        });
+
+        //Abrir itens menu
+        document.querySelectorAll(".menu-card").forEach(card => {
+
+            card.addEventListener("click", () => {
+
+                document.getElementById("modal-img").src = "imagens/presente1.png";
+
+                document.getElementById("modal-titulo").textContent = "Presente";
+
+                document.getElementById("modal-desc").textContent =
+                    "Descrição do presente.";
+
+                modal.classList.add("open");
+
+            });
 
         });
 
