@@ -40,9 +40,11 @@
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" data-video="videos/duna.mp4">Duna</a></li>
-                            <li><a class="dropdown-item" data-video="videos/dragao.mp4">Como treinar o seu Dragão</a>
-                            </li>
-                            <li><a class="dropdown-item" data-video="videos/starwars.mp4">Star Wars</a></li>
+                            <li><a class="dropdown-item" data-video="videos/dragao.mp4">Furia da Noite/Luz</a></li>
+                            <li><a class="dropdown-item" data-video="videos/dragao2.mp4">Soluço e Banguela</a></li>
+                            <li><a class="dropdown-item" data-video="videos/hogwarts.mp4">Hogwarts</a></li>
+                            <li><a class="dropdown-item" data-video="videos/gyrados.mp4">Gyrados</a></li>
+                            <li><a class="dropdown-item" data-video="videos/sylveon.mp4">Sylveon</a></li>
                         </ul>
                     </li>
 
@@ -139,24 +141,25 @@
 
     </div>
 
-    <div id="modal" class="modal">
+    <div id="modal" class="album-modal">
 
-        <div class="modal-content">
+        <div class="album-modal-content">
 
-            <div class="menu-close">✕</div>
+            <div class="menu-close" id="modal-close">✕</div>
+
+            <h1 id="modal-titulo"></h1>
 
             <div class="modal-body">
 
-                <img id="modal-img">
+                <div class="modal-img-frame">
+                    <img id="modal-img">
+                </div>
 
                 <div class="modal-text">
-
-                    <h1 id="modal-titulo"></h1>
 
                     <p id="modal-data"></p>
                     <p id="modal-local"></p>
                     <p id="modal-motivo"></p>
-
                     <p id="modal-desc"></p>
 
                 </div>
@@ -164,10 +167,11 @@
             </div>
 
         </div>
+
     </div>
 
-    <script type="module" src="js/bootstrap.js"></script>
-    <script type="module" src="js/main.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/main.js"></script>
     <script>
 
         //Troca de video tema
@@ -202,6 +206,9 @@
         //Album aberto e fechado
         const album = document.getElementById("album");
         const container = document.getElementById("album-container");
+        renderPresentes();
+        renderMapas();
+        renderCartas();
 
         let aberto = false;
 
@@ -299,8 +306,10 @@
                 const card = document.createElement("div");
                 card.classList.add("menu-card");
 
-                card.style.backgroundImage = `url(${presente.img})`;
-                card.style.backgroundSize = "cover";
+                const img = document.createElement("img");
+                img.src = presente.img;
+
+                card.appendChild(img);
 
                 card.onclick = () => abrirModal(presente);
 
@@ -320,8 +329,10 @@
                 const card = document.createElement("div");
                 card.classList.add("menu-card");
 
-                card.style.backgroundImage = `url(${mapa.img})`;
-                card.style.backgroundSize = "cover";
+                const img = document.createElement("img");
+                img.src = mapa.img;
+
+                card.appendChild(img);
 
                 card.onclick = () => abrirModal(mapa);
 
@@ -341,7 +352,10 @@
                 const item = document.createElement("div");
                 item.classList.add("menu-letter");
 
-                item.textContent = carta.titulo;
+                const img = document.createElement("img");
+                img.src = carta.img;
+
+                item.appendChild(img);
 
                 item.onclick = () => abrirModal(carta);
 
@@ -350,11 +364,6 @@
             });
 
         }
-
-        renderAlbum();
-        renderPresentes();
-        renderMapas();
-        renderCartas();
 
         document.getElementById("paginaProxima").onclick = () => {
 
@@ -386,7 +395,7 @@
             slot.addEventListener("click", () => {
 
                 const foto = dados.fotos[paginaAtual + i];
-                if(!foto) return;
+                document.getElementById("modal-titulo").textContent = foto.data;
 
                 document.getElementById("modal-img").src = foto.img;
 
@@ -402,28 +411,32 @@
         });
 
         //Abrir itens menu
-        document.querySelectorAll(".menu-card").forEach(card => {
+        function abrirModal(item) {
 
-            card.addEventListener("click", () => {
+            document.getElementById("modal-img").src = item.img;
 
-                document.getElementById("modal-img").src = "imagens/presente1.png";
+            document.getElementById("modal-titulo").textContent = item.titulo || "";
 
-                document.getElementById("modal-titulo").textContent = "Presente";
+            document.getElementById("modal-desc").textContent =
+                item.descricao || item.texto || "";
 
-                document.getElementById("modal-desc").textContent =
-                    "Descrição do presente.";
+            document.getElementById("modal-data").textContent = "";
+            document.getElementById("modal-local").textContent = "";
+            document.getElementById("modal-motivo").textContent = "";
 
-                modal.classList.add("open");
+            modal.classList.add("open");
 
-            });
+        }
 
-        });
-
+        document.getElementById("modal-close").onclick = () => {
+            modal.classList.remove("open");
+        };
 
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>

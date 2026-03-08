@@ -20,6 +20,9 @@ html {
 }
 
 /*--Navbar--*/
+.navbar{
+  z-index: 200;
+}
 .dropdown-toggle {
   font-size: 20px !important;
   font-weight: 600 !important;
@@ -88,7 +91,7 @@ html {
   display: flex;
   gap: 20px;
   align-items: center;
-
+  z-index: 200;
   margin-right: 1.5%;
 }
 
@@ -196,6 +199,7 @@ html {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  cursor:default;
 }
 
 .album-img.fade {
@@ -261,14 +265,20 @@ html {
 }
 
 .foto-slot{
-  width:260px;
-  height:260px;
+  width:75%;
+  height:75%;
 
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 
   border-radius:8px;
+  transition: 0.6s;
+}
+
+.foto-slot:hover{
+  transform: scale(1.1);
+  transform: translateY(-3%);
 }
 
 /* ----- MENU PRINCIPAL ----- */
@@ -277,6 +287,7 @@ html {
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 300;
 
   width: 650px;
   height: 520px;
@@ -294,14 +305,14 @@ html {
   display: block;
 }
 
-.menu-section {
-  display: none;
-  height: 100%;
-  overflow-y: auto;
+.menu-section{
+  display:none;
+  height:100%;
+  overflow-y:auto;
 }
 
-.menu-section.active {
-  display: block;
+.menu-section.active{
+  display:block;
 }
 
 .menu-title {
@@ -312,32 +323,52 @@ html {
 }
 
 .menu-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+
   gap: 25px;
+
+  justify-items: center;
+
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: hidden; 
 }
 
 .menu-grid.mapas {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.menu-card {
-  height: 70px;
-  background: #3b3b3b;
-  border-radius: 25px;
-  border: 3px solid black;
+.menu-card{
+  height:170px;
+  width:220px;
 
-  transition: 0.2s;
+  background:#3b3b3b;
+  border-radius:25px;
+  border:3px solid black;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  overflow:hidden;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.menu-card img{
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
 }
 
 .menu-card:hover {
@@ -345,23 +376,39 @@ html {
 }
 
 .menu-letter {
-  height: 60px;
-  padding-bottom: 10px;
-  background: #3b3b3b;
-  border-radius: 30px;
-  border: 3px solid black;
+  height:170px;
+  width:220px;
+
+  background:#3b3b3b;
+  border-radius:25px;
+  border:3px solid black;
+  gap:6px;
+  padding:6px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  overflow:hidden;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 .menu-letter:hover {
   transform: scale(1.05);
 }
 
+.menu-letter img{
+  width:160px;
+  height:140px;
+  object-fit:contain;
+}
+
 /* botão fechar menu */
 .menu-close {
   position: absolute;
 
-  top: 15px;
-  right: 20px;
+  right: 50px;
 
   font-size: 28px;
   font-weight: bold;
@@ -403,31 +450,28 @@ html {
 
 
 /*--Fotos Album--*/
-.modal {
-
+.album-modal{
   position: fixed;
-  top: 0;
-  left: 0;
+  top:0;
+  left:0;
 
-  width: 100%;
-  height: 100%;
+  width:100%;
+  height:100%;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
 
   backdrop-filter: blur(8px);
 
-  display: none;
-
-  align-items: center;
-  justify-content: center;
-
-  z-index: 100;
-
+  z-index: 9999;
 }
 
-.modal.open {
+.album-modal.open {
   display: flex;
 }
 
-.modal-content {
+.album-modal-content {
 
   width: 650px;
   height: 420px;
@@ -440,7 +484,55 @@ html {
   padding: 30px;
 
   position: relative;
+  background:rgba(25,20,40,0.92);
+  backdrop-filter: blur(6px);
 
+}
+.modal-body{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+#modal-titulo{
+  color: whitesmoke;
+  text-align: center;
+  font-weight: 600;
+}
+
+.modal-text{
+  color:white;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.modal-img-frame{
+  width:260px;
+  height:180px;
+
+  background:#444;
+  border:3px solid black;
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:8px;
+}
+
+.modal-img-frame img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+.modal-img-frame img{
+  width:90%;
+  height:auto;
+  border-radius:10px;
 }
 
 .modal-body {
