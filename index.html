@@ -410,6 +410,7 @@
 
         });
 
+        let modal_open = false
         //Abrir itens menu
         function abrirModal(item) {
 
@@ -424,7 +425,9 @@
             document.getElementById("modal-local").textContent = "";
             document.getElementById("modal-motivo").textContent = "";
 
-            modal.classList.add("open");
+            modal_open = !modal_open;
+
+            modal.classList.toggle("open");
 
         }
 

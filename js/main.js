@@ -2,7 +2,7 @@ const dados = {
 
   fotos: [
     {
-      img: "imagens/objetos/foto1.jpeg",
+      img: "imagens/objetos/foto1.png",
       data: "07/02/2026",
       local: "Panda cafeteria",   
       motivo: "Pedido de Namoro",
@@ -10,7 +10,7 @@ const dados = {
     },
 
     {
-      img: "imagens/objetos/foto2.jpeg",
+      img: "imagens/objetos/foto2.png",
       data: "07/02/2026",
       local: "Be COffe",   
       motivo: "1 mês de namoro",
