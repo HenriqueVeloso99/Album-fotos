@@ -19,21 +19,6 @@ const dados = {
       texto: "Foi um dia incríiiivel, amo cada detalhe, melhor comemoração possível, mesmo que só tenha ganhado um brownie de 1cm quadrado "
     },
 
-    {
-      img: "imagens/objetos/foto2.jpeg",
-      data: "07/02/2026",
-      local: "Be COffe",   
-      motivo: "1 mês de namoro",
-      texto: "Foi um dia incríiiivel, amo cada detalhe, melhor comemoração possível, mesmo que só tenha ganhado um brownie de 1cm quadrado "
-    },
-
-    {
-      img: "imagens/objetos/foto1.jpeg",
-      data: "07/02/2026",
-      local: "Be COffe",   
-      motivo: "1 mês de namoro",
-      texto: "Foi um dia incríiiivel, amo cada detalhe, melhor comemoração possível, mesmo que só tenha ganhado um brownie de 1cm quadrado "
-    }
   ],
 
   presentes: [
