@@ -464,7 +464,10 @@ html {
   display:none;
   align-items:center;
   justify-content:center;
-
+  display:flex;
+  opacity:0;
+  pointer-events:none;
+  transition:0.3s;
   backdrop-filter: blur(8px);
 
   z-index: 9999;
@@ -472,6 +475,8 @@ html {
 
 .album-modal.open {
   display: flex;
+  opacity: 1;
+  pointer-events:auto;
 }
 
 .album-modal-content {
@@ -558,4 +563,11 @@ html {
 
 .modal-close:hover {
   transform: scale(1.2);
+}
+
+
+
+/*======MEDIA======*/
+@media () {
+  
 }

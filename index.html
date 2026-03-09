@@ -249,13 +249,18 @@
 
         //Botoes Menu->
         const menuMain = document.getElementById("menu-main");
-
+        let menuAtual = null
         const menuPresentes = document.getElementById("menu-presentes");
         const menuMapas = document.getElementById("menu-mapas");
         const menuCartas = document.getElementById("menu-cartas");
 
         function abrirMenu(menu) {
 
+            if (menuMain.classList.contains("open") && menuAtual === menu) {
+                menuMain.classList.remove("open");
+                menuAtual = null;
+                return;
+            }
             menuMain.classList.add("open");
 
             menuPresentes.classList.remove("active");
@@ -263,6 +268,7 @@
             menuCartas.classList.remove("active");
 
             menu.classList.add("active");
+            menuAtual = menu;
         }
 
         document.getElementById("presentes").onclick = () => abrirMenu(menuPresentes);
@@ -409,8 +415,6 @@
             });
 
         });
-
-        let modal_open = false
         //Abrir itens menu
         function abrirModal(item) {
 
@@ -425,9 +429,8 @@
             document.getElementById("modal-local").textContent = "";
             document.getElementById("modal-motivo").textContent = "";
 
-            modal_open = !modal_open;
 
-            modal.classList.toggle("open");
+            modal.classList.add("open")
 
         }
 
