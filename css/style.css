@@ -20,9 +20,10 @@ html {
 }
 
 /*--Navbar--*/
-.navbar{
+.navbar {
   z-index: 200;
 }
+
 .dropdown-toggle {
   font-size: 20px !important;
   font-weight: 600 !important;
@@ -199,7 +200,7 @@ html {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  cursor:default;
+  cursor: default;
 }
 
 .album-img.fade {
@@ -242,44 +243,44 @@ html {
 }
 
 /*Fotos*/
-.album-pages{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
+.album-pages {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  width:70%;
-  height:60%;
+  width: 70%;
+  height: 60%;
 
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  justify-items:center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
   pointer-events: none;
 
-  z-index:5;
+  z-index: 5;
 }
 
-.album-container.aberto .album-pages{
+.album-container.aberto .album-pages {
   pointer-events: auto;
 }
 
-.foto-slot{
-  width:100%;
-  height:100%;
+.foto-slot {
+  width: 100%;
+  height: 100%;
 
   max-width: 300px;
   max-height: 300px;
 
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  border-radius:8px;
+  border-radius: 8px;
   transition: 0.6s;
 }
 
-.foto-slot:hover{
+.foto-slot:hover {
   transform: scale(1.1);
   transform: translateY(-3%);
 }
@@ -308,14 +309,14 @@ html {
   display: block;
 }
 
-.menu-section{
-  display:none;
-  height:100%;
-  overflow-y:auto;
+.menu-section {
+  display: none;
+  height: 100%;
+  overflow-y: auto;
 }
 
-.menu-section.active{
-  display:block;
+.menu-section.active {
+  display: block;
 }
 
 .menu-title {
@@ -343,35 +344,35 @@ html {
   justify-items: center;
 
   overflow-x: hidden;
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
 .menu-grid.mapas {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.menu-card{
-  height:170px;
-  width:220px;
+.menu-card {
+  height: 170px;
+  width: 220px;
 
-  background:#3b3b3b;
-  border-radius:25px;
-  border:3px solid black;
+  background: #3b3b3b;
+  border-radius: 25px;
+  border: 3px solid black;
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  overflow:hidden;
+  overflow: hidden;
   cursor: pointer;
   transition: 0.5s;
 }
 
-.menu-card img{
-  width:100%;
-  height:100%;
+.menu-card img {
+  width: 100%;
+  height: 100%;
 
-  object-fit:contain;
+  object-fit: contain;
 }
 
 .menu-card:hover {
@@ -379,20 +380,20 @@ html {
 }
 
 .menu-letter {
-  height:170px;
-  width:220px;
+  height: 170px;
+  width: 220px;
 
-  background:#3b3b3b;
-  border-radius:25px;
-  border:3px solid black;
-  gap:6px;
-  padding:6px;
+  background: #3b3b3b;
+  border-radius: 25px;
+  border: 3px solid black;
+  gap: 6px;
+  padding: 6px;
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  overflow:hidden;
+  overflow: hidden;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -401,10 +402,10 @@ html {
   transform: scale(1.05);
 }
 
-.menu-letter img{
-  width:160px;
-  height:140px;
-  object-fit:contain;
+.menu-letter img {
+  width: 160px;
+  height: 140px;
+  object-fit: contain;
 }
 
 /* botão fechar menu */
@@ -453,21 +454,21 @@ html {
 
 
 /*--Fotos Album--*/
-.album-modal{
+.album-modal {
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
 
-  display:none;
-  align-items:center;
-  justify-content:center;
-  display:flex;
-  opacity:0;
-  pointer-events:none;
-  transition:0.3s;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
   backdrop-filter: blur(8px);
 
   z-index: 9999;
@@ -476,7 +477,7 @@ html {
 .album-modal.open {
   display: flex;
   opacity: 1;
-  pointer-events:auto;
+  pointer-events: auto;
 }
 
 .album-modal-content {
@@ -492,55 +493,56 @@ html {
   padding: 30px;
 
   position: relative;
-  background:rgba(25,20,40,0.92);
+  background: rgba(25, 20, 40, 0.92);
   backdrop-filter: blur(6px);
 
 }
-.modal-body{
-  display:flex;
-  gap:25px;
-  align-items:center;
+
+.modal-body {
+  display: flex;
+  gap: 25px;
+  align-items: center;
 }
 
-#modal-titulo{
+#modal-titulo {
   color: whitesmoke;
   text-align: center;
   font-weight: 600;
 }
 
-.modal-text{
-  color:white;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
+.modal-text {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.modal-img-frame{
-  width:260px;
-  height:180px;
+.modal-img-frame {
+  width: 260px;
+  height: 180px;
 
-  background:#444;
-  border:3px solid black;
-  border-radius:18px;
+  background: #444;
+  border: 3px solid black;
+  border-radius: 18px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  padding:8px;
+  padding: 8px;
 }
 
-.modal-img-frame img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-  border-radius:10px;
+.modal-img-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
-.modal-img-frame img{
-  width:90%;
-  height:auto;
-  border-radius:10px;
+.modal-img-frame img {
+  width: 90%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .modal-body {
@@ -565,9 +567,107 @@ html {
   transform: scale(1.2);
 }
 
+/* =============RESPONSIVIDADE============= */
+.mobile-left {
+  justify-self: start;
+}
 
+.mobile-right {
+  justify-self: end;
+}
 
-/*======MEDIA======*/
-@media () {
-  
+/* NOTEBOOK */
+@media (max-width:1200px) {
+
+  .album-container.aberto {
+    max-width: 95vw;
+    height: 70vh;
+  }
+
+  .album-pages {
+    width: 80%;
+    height: 65%;
+  }
+
+  .menu-main {
+    width: 80vw;
+    height: 75vh;
+  }
+
+}
+
+/* TABLET */
+@media (max-width:900px) {
+
+  .album-img {
+    width: 45vw;
+    height: 65vh;
+  }
+
+  .album-pages {
+    width: 85%;
+    height: 65%;
+  }
+
+  .foto-slot {
+    max-width: 240px;
+    max-height: 240px;
+  }
+
+  .menu-main {
+    width: 90vw;
+    height: 75vh;
+  }
+
+  .menu-card {
+    width: 180px;
+    height: 140px;
+  }
+
+}
+
+/* CELULAR */
+@media (max-width:600px) {
+
+  .album-container.aberto {
+    height: 70vh;
+    padding: 10px;
+    cursor: default;
+  }
+
+  .album-pages {
+    grid-template-columns: 1fr;
+    width: 60%;
+    height: 65%;
+  }
+
+  .foto-slot {
+    margin-top: 100px;
+    width: 360px;
+    height: 360px;
+  }
+
+  .foto-slot img{
+    width: 460px;
+    height: 460px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-list {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-main {
+    width: 92vw;
+    height: 80vh;
+    padding: 20px;
+  }
+
+  .menu-title {
+    font-size: 28px;
+  }
+
 }

@@ -206,6 +206,8 @@
         //Album aberto e fechado
         const album = document.getElementById("album");
         const container = document.getElementById("album-container");
+        const albumMonoLeft = "imagens/album_aberto_mono1.png";
+        const albumMonoRight = "imagens/album_aberto_mono2.png";
         renderPresentes();
         renderMapas();
         renderCartas();
@@ -286,21 +288,42 @@
 
         function renderAlbum() {
 
-            const esquerda = dados.fotos[paginaAtual];
-            const direita = dados.fotos[paginaAtual + 1];
-
             const slots = document.querySelectorAll(".foto-slot");
 
-            if (esquerda) {
-                slots[0].style.backgroundImage = `url(${esquerda.img})`;
-            }
+            if (window.innerWidth <= 600) {
 
-            if (direita) {
-                slots[1].style.backgroundImage = `url(${direita.img})`;
+                const foto = dados.fotos[paginaAtual];
+
+                if (foto) {
+                    slots[0].style.backgroundImage = `url(${foto.img_album})`;
+                }
+
+                slots[1].style.backgroundImage = "";
+
+                if (paginaAtual % 2 === 0) {
+                    album.src = albumMonoLeft;
+                } else {
+                    album.src = albumMonoRight;
+                }
+
+            } else {
+
+                album.src = album.dataset.aberto;
+
+                const esquerda = dados.fotos[paginaAtual];
+                const direita = dados.fotos[paginaAtual + 1];
+
+                if (esquerda) {
+                    slots[0].style.backgroundImage = `url(${esquerda.img})`;
+                }
+
+                if (direita) {
+                    slots[1].style.backgroundImage = `url(${direita.img})`;
+                }
+
             }
 
         }
-
         //Sistemas de itens menu
         function renderPresentes() {
 
@@ -375,10 +398,21 @@
 
             if (!aberto) return;
 
-            if (paginaAtual + 2 < dados.fotos.length) {
-                paginaAtual += 2;
-                renderAlbum();
+            if (window.innerWidth <= 600) {
+
+                if (paginaAtual + 1 < dados.fotos.length) {
+                    paginaAtual += 1;
+                }
+
+            } else {
+
+                if (paginaAtual + 2 < dados.fotos.length) {
+                    paginaAtual += 2;
+                }
+
             }
+
+            renderAlbum();
 
         };
 
@@ -386,10 +420,21 @@
 
             if (!aberto) return;
 
-            if (paginaAtual - 2 >= 0) {
-                paginaAtual -= 2;
-                renderAlbum();
+            if (window.innerWidth <= 600) {
+
+                if (paginaAtual - 1 >= 0) {
+                    paginaAtual -= 1;
+                }
+
+            } else {
+
+                if (paginaAtual - 2 >= 0) {
+                    paginaAtual -= 2;
+                }
+
             }
+
+            renderAlbum();
 
         };
 
