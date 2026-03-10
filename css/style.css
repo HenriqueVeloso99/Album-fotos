@@ -675,6 +675,7 @@ html {
     object-fit: cover;
     border-radius: 8px;
     transition: 0.4s;
+    margin-bottom: 5%;
   }
 
   /* centralização esquerda/direita */
