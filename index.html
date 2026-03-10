@@ -78,8 +78,12 @@
 
             <div class="album-pages">
 
-                <div class="foto-slot" data-index="0"></div>
-                <div class="foto-slot" data-index="1"></div>
+                <div class="foto-slot" data-index="0">
+                    <img class="foto-img">
+                </div>
+                <div class="foto-slot" data-index="1">
+                    <img class="foto-img">
+                </div>
 
             </div>
 
@@ -294,11 +298,16 @@
 
                 const foto = dados.fotos[paginaAtual];
 
+                const img = slots[0].querySelector("img");
+                const img2 = slots[1].querySelector("img");
+
                 if (foto) {
-                    slots[0].style.backgroundImage = `url(${foto.img_album})`;
+                    img.src = foto.img_album;
+                } else {
+                    img.src = "";
                 }
 
-                slots[1].style.backgroundImage = "";
+                img2.src = "";
 
                 if (paginaAtual % 2 === 0) {
                     album.src = albumMonoLeft;
@@ -313,13 +322,11 @@
                 const esquerda = dados.fotos[paginaAtual];
                 const direita = dados.fotos[paginaAtual + 1];
 
-                if (esquerda) {
-                    slots[0].style.backgroundImage = `url(${esquerda.img_album})`;
-                }
+                const img1 = slots[0].querySelector("img");
+                const img2 = slots[1].querySelector("img");
 
-                if (direita) {
-                    slots[1].style.backgroundImage = `url(${direita.img_album})`;
-                }
+                img1.src = esquerda ? esquerda.img_album : "";
+                img2.src = direita ? direita.img_album : "";
 
             }
 
@@ -396,6 +403,8 @@
 
         document.getElementById("paginaProxima").onclick = () => {
 
+            e.stopPropagation();
+
             if (!aberto) return;
 
             if (window.innerWidth <= 600) {
@@ -417,6 +426,8 @@
         };
 
         document.getElementById("paginaAnterior").onclick = () => {
+
+            e.stopPropagation();
 
             if (!aberto) return;
 
@@ -440,12 +451,15 @@
 
         //Abrir foto
         const modal = document.getElementById("modal");
-
         document.querySelectorAll(".foto-slot").forEach((slot, i) => {
 
             slot.addEventListener("click", () => {
 
+                if (!aberto) return;
+
                 const foto = dados.fotos[paginaAtual + i];
+                if (!foto) return;
+
                 document.getElementById("modal-titulo").textContent = foto.data;
 
                 document.getElementById("modal-img").src = foto.img;
