@@ -407,21 +407,12 @@
 
             if (!aberto) return;
 
-            if (window.innerWidth <= 600) {
+            const passo = window.innerWidth <= 600 ? 1 : 2;
 
-                if (paginaAtual + 1 < dados.fotos.length) {
-                    paginaAtual += 1;
-                }
-
-            } else {
-
-                if (paginaAtual + 2 < dados.fotos.length) {
-                    paginaAtual += 2;
-                }
-
+            if (paginaAtual + passo < dados.fotos.length) {
+                paginaAtual += passo;
+                renderAlbum();
             }
-
-            renderAlbum();
 
         };
 
@@ -431,21 +422,12 @@
 
             if (!aberto) return;
 
-            if (window.innerWidth <= 600) {
+            const passo = window.innerWidth <= 600 ? 1 : 2;
 
-                if (paginaAtual - 1 >= 0) {
-                    paginaAtual -= 1;
-                }
-
-            } else {
-
-                if (paginaAtual - 2 >= 0) {
-                    paginaAtual -= 2;
-                }
-
+            if (paginaAtual - passo >= 0) {
+                paginaAtual -= passo;
+                renderAlbum();
             }
-
-            renderAlbum();
 
         };
 
