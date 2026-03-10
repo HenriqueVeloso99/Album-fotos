@@ -669,13 +669,12 @@ html {
   }
 
   .foto-img {
-    width: 180%;
+    width: 100%;
     max-width: 320px;
     height: auto;
     object-fit: cover;
     border-radius: 8px;
     transition: 0.4s;
-    margin-bottom: 30%;
   }
 
   /* centralização esquerda/direita */
