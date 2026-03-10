@@ -636,54 +636,32 @@ html {
 /* CELULAR */
 @media (max-width:600px) {
 
-  /* álbum fechado */
+  /* álbum maior */
   .album-img {
     width: 75vw;
     height: auto;
   }
 
-  /* container do álbum aberto */
+  /* container */
   .album-container.aberto {
-    height: 72vh;
+    height: 70vh;
     max-width: 95vw;
     padding: 10px;
-    position: relative;
   }
 
-  /* navegação */
   .album-nav {
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
     width: 100%;
     z-index: 20;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-  }
-
-  .album-nav button {
-    position: relative;
-    z-index: 30;
-    font-size: 14px;
   }
 
   /* área das fotos */
   .album-pages {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
     grid-template-columns: 1fr;
-
-    width: 90%;
-    height: 70%;
-
-    z-index: 5;
-
-    pointer-events: auto;
+    width: 100%;
+    height: 75%;
+    margin-top: 8vh;
   }
 
   /* slot da foto */
@@ -700,28 +678,32 @@ html {
     height: auto;
     object-fit: cover;
     border-radius: 8px;
+    transition: 0.4s;
   }
 
-  /* alinhamento */
+  /* centralização esquerda/direita */
   .mobile-left {
-    justify-self: center;
+    justify-self: start;
   }
 
   .mobile-right {
-    justify-self: center;
+    justify-self: end;
   }
 
-  /* menus */
   .menu-list {
     grid-template-columns: repeat(1, 1fr);
   }
 
   .menu-grid {
+    display: grid;
     grid-template-columns: repeat(1, 1fr);
+
+
   }
 
   .menu-grid.mapas {
     grid-template-columns: repeat(1, 1fr);
   }
+
 
 }
