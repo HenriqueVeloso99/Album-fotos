@@ -39,12 +39,23 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" data-video="videos/duna.mp4">Duna</a></li>
-                            <li><a class="dropdown-item" data-video="videos/dragao.mp4">Furia da Noite/Luz</a></li>
-                            <li><a class="dropdown-item" data-video="videos/dragao2.mp4">Soluço e Banguela</a></li>
-                            <li><a class="dropdown-item" data-video="videos/hogwarts.mp4">Hogwarts</a></li>
-                            <li><a class="dropdown-item" data-video="videos/gyrados.mp4">Gyrados</a></li>
-                            <li><a class="dropdown-item" data-video="videos/sylveon.mp4">Sylveon</a></li>
+                            <li><a class="dropdown-item" id="video1" data-video="videos/duna.mp4" 
+                                data-img="videos/duna_img.jpg">Duna</a></li>
+
+                            <li><a class="dropdown-item" id="video2" data-video="videos/dragao.mp4" 
+                                data-img="imagens/dragao_bg.jpg">Furia da Noite/Luz</a></li>
+
+                            <li><a class="dropdown-item" id="video3" data-video="videos/dragao2.mp4" 
+                                data-img="imagens/dragao_bg.jpg">Soluço e Banguela</a></li>
+
+                            <li><a class="dropdown-item" id="video4" data-video="videos/hogwarts.mp4" 
+                                data-img="imagens/dragao_bg.jpg">Hogwarts</a></li>
+
+                            <li><a class="dropdown-item" id="video5" data-video="videos/gyrados.mp4" 
+                                data-img="imagens/dragao_bg.jpg">Gyrados</a></li>
+
+                            <li><a class="dropdown-item" id="video6" data-video="videos/sylveon.mp4" 
+                                data-img="imagens/dragao_bg.jpg">Sylveon</a></li>
                         </ul>
                     </li>
 
@@ -190,20 +201,43 @@
             video.play();
         }
 
+        if (window.innerWidth <= 600) {
+            const video1 = document.getElementById("video1")
+            const video2 = document.getElementById("video2")
+            const video3 = document.getElementById("video3")
+            const video4 = document.getElementById("video4")
+            const video5 = document.getElementById("video5")
+            const video6 = document.getElementById("video6")
+
+
+        }
+
         //Navbar
         const temaAtual = document.getElementById("temaAtual");
         const itensTema = document.querySelectorAll(".dropdown-item");
 
         itensTema.forEach(item => {
             item.addEventListener("click", (e) => {
+
                 e.preventDefault();
 
                 const nomeTema = item.textContent;
-                const video = item.dataset.video;
-
                 temaAtual.textContent = nomeTema;
 
-                trocarVideo(video);
+                if (window.innerWidth <= 600) {
+
+                    const img = item.dataset.img;
+                    document.querySelector(".video-container").style.backgroundImage = `url(${img})`;
+
+                    document.getElementById("bgvideo").style.display = "none";
+
+                } else {
+
+                    const video = item.dataset.video;
+                    trocarVideo(video);
+
+                }
+
             });
         });
 

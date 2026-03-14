@@ -19,6 +19,12 @@ html {
   object-fit: cover;
 }
 
+.video-container{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 /*--Navbar--*/
 .navbar {
   z-index: 200;
@@ -37,6 +43,10 @@ html {
 .dropdown-item:hover {
   background-color: rgb(226, 223, 223) !important;
   color: #a50404 !important;
+}
+
+.drop-pequeno {
+  visibility: hidden;
 }
 
 .temaAtual {
@@ -702,5 +712,14 @@ html {
     grid-template-columns: repeat(1, 1fr);
   }
 
+  .drop-cheio {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  .drop-pequeno {
+    visibility: visible;
+  }
 
 }
