@@ -264,7 +264,8 @@ html {
 .album-pages {
   position: absolute;
   top: 50%;
-  left: 53%;
+  left: 50%;
+  padding-left: 30px;
   transform: translate(-50%, -50%);
 
   width: 90%;
