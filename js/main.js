@@ -5,7 +5,7 @@ const dados = {
       img: "imagens/objetos/foto1.jpeg",
       img_album: "imagens/objetos/foto1.png",
       data: "07/02/2026",
-      local: "Panda cafeteria",   
+      local: "Pandas cafeteria",   
       motivo: "Pedido de Namoro",
       texto: "Um dos dias mais felizes da minha vida, e que marcou a melhor fase dela, a fase que você está <3, pena que as empregadas atrapalharam."
     },
@@ -13,9 +13,18 @@ const dados = {
     {
       img: "imagens/objetos/foto2.jpeg",
       img_album: "imagens/objetos/foto2.png",
-      data: "07/02/2026",
-      local: "Be COffe",   
+      data: "07/03/2026",
+      local: "Be Coffe",   
       motivo: "1 mês de namoro",
+      texto: "Adoreiiii o dia, teve o uuuhul, as mágicas do snape nordestino, briga no carro KKKKKKK, dia memorável, também por estrar com o amor da minha vidaaa"
+    },
+
+    {
+      img: "imagens/objetos/foto3.jpeg",
+      img_album: "imagens/objetos/foto3.png",
+      data: "14/03/2026",
+      local: "Ozzy Hamburgueria",   
+      motivo: "2º jantar com meus pais ",
       texto: "Foi um dia incríiiivel, amo cada detalhe, melhor comemoração possível, mesmo que só tenha ganhado um brownie de 1cm quadrado "
     },
 

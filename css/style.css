@@ -264,7 +264,7 @@ html {
 .album-pages {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 53%;
   transform: translate(-50%, -50%);
 
   width: 90%;
@@ -293,8 +293,8 @@ html {
 
 .foto-img {
   width: 100%;
-  max-width: 520px;
-  max-height: 520px;
+  max-width: 420px;
+  max-height: 420px;
   object-fit: cover;
   border-radius: 8px;
   transition: 0.4s;
