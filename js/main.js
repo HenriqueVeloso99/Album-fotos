@@ -61,6 +61,12 @@ const dados = {
       descricao: "Meu Deus eu real surtei internamente, ainda mais com os cookies, melhor presente do mundo da melhor namorada do mundo <3"
     },
 
+    {
+      titulo: "O marca página",
+      img: "imagens/objetos/gift6.jpeg",
+      descricao: "EU AMO ESSE MARCA PÁGINA COM MINHA VIDAAAA, uso ele sempre que posso e me lembra de você sempre que vejo, gostei demais dele, um dia vou retribuir <3"
+    },
+
   ],
 
   mapas: [
