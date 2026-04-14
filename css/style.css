@@ -429,6 +429,54 @@ html {
   object-fit: contain;
 }
 
+.menu-site {
+  min-height: 120px;
+  width: 100%;
+
+  background: #3b3b3b;
+  border-radius: 25px;
+  border: 3px solid black;
+  padding: 18px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.menu-site:hover {
+  transform: scale(1.03);
+  color: white;
+}
+
+.menu-site img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.menu-site-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-site-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.menu-site-desc {
+  font-size: 15px;
+  line-height: 1.35;
+  color: #e0e0e0;
+}
+
 /* botão fechar menu */
 .menu-close {
   position: absolute;

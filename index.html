@@ -67,6 +67,11 @@
 
             </div>
             <div id="buttons-container">
+                <div id="sites" class="button-menu">
+                    <img type="button" class="sites-icon" src="imagens/web_icon.png">
+                    <span class="btn-label">Sites</span>
+                </div>
+
                 <div id="mapas" class="button-menu">
                     <img type="button" class="mapas-icon" src="imagens/map_icon.png">
                     <span class="btn-label">Mapas</span>
@@ -155,6 +160,14 @@
                 <div class="menu-letter"></div>
                 <div class="menu-letter"></div>
                 <div class="menu-letter"></div>
+            </div>
+        </div>
+
+        <!-- CARTAS -->
+        <div id="menu-sites" class="menu-section">
+            <h1 class="menu-title">Sites</h1>
+
+            <div class="menu-list">
             </div>
         </div>
 
@@ -265,6 +278,7 @@
         renderPresentes();
         renderMapas();
         renderCartas();
+        renderSites();
 
         let aberto = false;
 
@@ -309,6 +323,7 @@
         const menuPresentes = document.getElementById("menu-presentes");
         const menuMapas = document.getElementById("menu-mapas");
         const menuCartas = document.getElementById("menu-cartas");
+        const menuSites = document.getElementById("menu-sites");
 
         function abrirMenu(menu) {
 
@@ -322,6 +337,7 @@
             menuPresentes.classList.remove("active");
             menuMapas.classList.remove("active");
             menuCartas.classList.remove("active");
+            menuSites.classList.remove("active");
 
             menu.classList.add("active");
             menuAtual = menu;
@@ -330,6 +346,7 @@
         document.getElementById("presentes").onclick = () => abrirMenu(menuPresentes);
         document.getElementById("mapas").onclick = () => abrirMenu(menuMapas);
         document.getElementById("cartas").onclick = () => abrirMenu(menuCartas);
+        document.getElementById("sites").onclick = () => abrirMenu(menuSites);
 
         const menuClose = document.getElementById("menu-close");
 
@@ -444,6 +461,39 @@
                 item.appendChild(img);
 
                 item.onclick = () => abrirModal(carta);
+
+                container.appendChild(item);
+
+            });
+
+        }
+
+        function renderSites() {
+
+            const container = document.querySelector("#menu-sites .menu-list");
+            container.innerHTML = "";
+
+            dados.sites.forEach(site => {
+
+                const item = document.createElement("a");
+                item.classList.add("menu-site");
+                item.href = site.link;
+
+                const content = document.createElement("div");
+                content.classList.add("menu-site-content");
+
+                const titulo = document.createElement("span");
+                titulo.classList.add("menu-site-title");
+                titulo.textContent = site.titulo;
+
+                const descricao = document.createElement("span");
+                descricao.classList.add("menu-site-desc");
+                descricao.textContent = site.descricao;
+
+                content.appendChild(titulo);
+                content.appendChild(descricao);
+
+                item.appendChild(content);
 
                 container.appendChild(item);
 
