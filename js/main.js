@@ -68,6 +68,18 @@ const dados = {
       descricao: "EU AMO ESSE MARCA PÁGINA COM MINHA VIDAAAA, uso ele sempre que posso e me lembra de você sempre que vejo, gostei demais dele, um dia vou retribuir <3"
     },
 
+    {
+      titulo: "Cd Brat",
+      img: "imagens/objetos/gift7.jpg",
+      descricao: "Adorei ter comprado o cd pra sua coleção, mesmo tendo deixado meio óbvio que seria isso kkkkkk, prometo comprar mais pra encher sua prateleira."
+    },
+
+    {
+      titulo: "Caixinha pokemon",
+      img: "imagens/objetos/gift8.jpeg",
+      descricao: "LITERALMENTE CHOREIII COM ALGO TÃO PERFEITO VINDO DE UMA PESSOA TÃO PERFEITAAAA, nunca imaginei que seria tão amado por alguém, nunca imaginei que iria amar tanto alguém, e ainda bem que esse alguém é você"
+    },
+
   ],
 
   mapas: [
