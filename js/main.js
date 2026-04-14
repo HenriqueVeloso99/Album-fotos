@@ -109,7 +109,7 @@ const dados = {
     {
       titulo: "Site da Carta",
       descricao: "Primeiro site que fiz pra você de muuuitosss outros, te amooo meu amor <3",
-      link: "sites/site_carta/carta.html"
+      link: "sites/carta.html"
     }
   ]
 

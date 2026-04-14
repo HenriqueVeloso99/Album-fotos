@@ -44,7 +44,7 @@ html {
 
 .dropdown-item {
   cursor: pointer;
-  transition: 0.6s !important;
+  transition: 0.7s !important;
 }
 
 .dropdown-item:hover {
