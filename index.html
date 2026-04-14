@@ -38,26 +38,28 @@
                             Temas: <span id="temaAtual" class="temaAtual">Duna</span>
                         </a>
 
-                        <   ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" id="video1" data-video="videos/duna.mp4"
-                                    data-img="videos/duna_img.jpg">Duna</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" id="video1" data-video-desktop="videos/duna.mp4"
+                                    data-img-mobile="videos/duna_img.jpg">Duna</a></li>
 
-                            <li><a class="dropdown-item" id="video2" data-video="videos/dragao.mp4"
-                                    data-img="videos/dragao_img1.jpg">Furia da Noite/Luz</a></li>
+                            <li><a class="dropdown-item" id="video2" data-video-desktop="videos/dragao.mp4"
+                                    data-img-mobile="videos/dragao_img1.jpg">Furia da Noite/Luz</a></li>
 
-                            <li><a class="dropdown-item" id="video3" data-video="videos/dragao2.mp4"
-                                    data-img="videos/dragao_img2.jpg">Soluço e Banguela</a></li>
+                            <li><a class="dropdown-item" id="video3" data-video-desktop="videos/dragao2.mp4"
+                                    data-img-mobile="videos/dragao_img2.jpg">Soluço e Banguela</a></li>
 
-                            <li><a class="dropdown-item" id="video4" data-video="videos/hogwarts.mp4"
-                                    data-img="videos/ravenclaw.jpg">Hogwarts</a></li>
+                            <li><a class="dropdown-item" id="video4" data-video-desktop="videos/hogwarts.mp4"
+                                    data-img-mobile="videos/ravenclaw.jpg">Hogwarts</a></li>
 
-                            <li><a class="dropdown-item" id="video5" data-video="videos/gyrados.mp4"
-                                    data-img="videos/gyrados_img.jpg">Gyrados</a></li>
+                            <li><a class="dropdown-item" id="video5" data-video-desktop="videos/gyrados.mp4"
+                                    data-img-mobile="videos/gyrados_img.jpg">Gyrados</a></li>
 
-                            <li><a class="dropdown-item" id="video6" data-video="videos/sylveon.mp4"
-                                    data-img="videos/lugia.jpg">Pokémon</a></li>
+                            <li><a class="dropdown-item" id="video6" data-video-desktop="videos/sylveon.mp4"
+                                    data-img-mobile="videos/lugia.jpg">Pokémon</a></li>
 
-                            <li><a class="dropdown-item" id="video7" data-img="videos/thedramaDesk.jpg"> The Drama </a></li>
+                            <li><a class="dropdown-item" id="video7" data-img-desktop="videos/thedramaDesk.jpg"
+                                    data-img-mobile="videos/thedramaMob.webp"> The Drama </a>
+                            </li>
                         </ul>
                     </li>
 
@@ -192,28 +194,39 @@
     <script>
 
         //Troca de video tema
-        function trocarVideo(caminhoDoVideo) {
+        function trocarMidia(item) {
             const video = document.getElementById('bgvideo');
             const source = document.getElementById('videoSource');
-
-            source.src = caminhoDoVideo;
-
-            video.load();
-
-            video.play();
-        }
-
-        if (window.innerWidth <= 800) {
-            const video = document.getElementById("bgvideo");
             const container = document.querySelector(".video-container");
-            const temaInicial = document.getElementById("video1");
 
-            if (video) {
+            const isMobile = window.innerWidth <= 800;
+
+            // Escolhe os dados baseado no dispositivo
+            const videoSrc = isMobile
+                ? item.dataset.videoMobile
+                : item.dataset.videoDesktop;
+
+            const imgSrc = isMobile
+                ? item.dataset.imgMobile
+                : item.dataset.imgDesktop;
+
+            // Se tiver vídeo válido → usa vídeo
+            if (videoSrc && videoSrc.match(/\.(mp4|webm|ogg)$/i)) {
+
+                video.style.display = "block";
+                container.style.backgroundImage = "";
+
+                source.src = videoSrc;
+                video.load();
+                video.play();
+
+            } else if (imgSrc) {
+
+                video.pause();
                 video.style.display = "none";
+
+                container.style.backgroundImage = `url(${imgSrc})`;
             }
-
-            container.style.backgroundImage = `url(${temaInicial.dataset.img})`;
-
         }
 
         //Navbar
@@ -228,19 +241,7 @@
                 const nomeTema = item.textContent;
                 temaAtual.textContent = nomeTema;
 
-                if (window.innerWidth <= 600) {
-
-                    const img = item.dataset.img;
-                    document.querySelector(".video-container").style.backgroundImage = `url(${img})`;
-
-                    document.getElementById("bgvideo").style.display = "none";
-
-                } else {
-
-                    const video = item.dataset.video;
-                    trocarVideo(video);
-
-                }
+                trocarMidia(item);
 
             });
         });
