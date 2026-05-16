@@ -72,6 +72,11 @@
                     <span class="btn-label">Sites</span>
                 </div>
 
+                <div id="musicas" class="button-menu">
+                    <img type="button" class="musicas-icon" src="imagens/music_icon.png">
+                    <span class="btn-label">Músicas</span>
+                </div>
+
                 <div id="mapas" class="button-menu">
                     <img type="button" class="mapas-icon" src="imagens/map_icon.png">
                     <span class="btn-label">Mapas</span>
@@ -202,6 +207,20 @@
 
     </div>
 
+    <div id="modal-musicas" class="album-modal musicas-modal">
+
+        <div class="album-modal-content musicas-modal-content">
+
+            <div class="menu-close" id="modal-musicas-close">âœ•</div>
+
+            <h1 class="musicas-modal-title">Músicas</h1>
+
+            <div id="musicas-grid" class="musicas-grid"></div>
+
+        </div>
+
+    </div>
+
     <script src="js/bootstrap.js"></script>
     <script src="js/main.js?v=66"></script>
     <script>
@@ -324,6 +343,7 @@
         const menuMapas = document.getElementById("menu-mapas");
         const menuCartas = document.getElementById("menu-cartas");
         const menuSites = document.getElementById("menu-sites");
+        const modalMusicas = document.getElementById("modal-musicas");
 
         function abrirMenu(menu) {
 
@@ -347,6 +367,7 @@
         document.getElementById("mapas").onclick = () => abrirMenu(menuMapas);
         document.getElementById("cartas").onclick = () => abrirMenu(menuCartas);
         document.getElementById("sites").onclick = () => abrirMenu(menuSites);
+        document.getElementById("musicas").onclick = () => abrirModalMusicas();
 
         const menuClose = document.getElementById("menu-close");
 
@@ -501,6 +522,48 @@
 
         }
 
+        function renderMusicas() {
+
+            const container = document.getElementById("musicas-grid");
+            container.innerHTML = "";
+
+            dados.musicas.forEach(musica => {
+
+                const card = document.createElement("div");
+                card.classList.add("musica-card");
+
+                const video = document.createElement("video");
+                video.src = musica.video;
+                video.controls = true;
+                video.preload = "metadata";
+                video.playsInline = true;
+
+                const titulo = document.createElement("span");
+                titulo.classList.add("musica-title");
+                titulo.textContent = musica.titulo;
+
+                card.appendChild(video);
+                card.appendChild(titulo);
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+        function abrirModalMusicas() {
+            renderMusicas();
+            modalMusicas.classList.add("open");
+        }
+
+        function fecharModalMusicas() {
+            modalMusicas.classList.remove("open");
+            modalMusicas.querySelectorAll("video").forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        }
+
         document.getElementById("paginaProxima").onclick = (e) => {
 
             e.stopPropagation();
@@ -577,6 +640,10 @@
 
         document.getElementById("modal-close").onclick = () => {
             modal.classList.remove("open");
+        };
+
+        document.getElementById("modal-musicas-close").onclick = () => {
+            fecharModalMusicas();
         };
 
     </script>

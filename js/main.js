@@ -29,6 +29,15 @@ const dados = {
       texto: "Adoreiiii o dia, teve o uuuhul, as mágicas do snape nordestino, briga no carro KKKKKKK, dia memorável, também por estrar com o amor da minha vidaaa"
     },
 
+    {
+      img: "imagens/objetos/foto3.jpeg",
+      img_album: "imagens/objetos/foto3.png",
+      data: "14/03/2026",
+      local: "Ozzy Hamburgueria",
+      motivo: "2º jantar com meus pais ",
+      texto: "Adoreiiii o dia, teve o uuuhul, as mágicas do snape nordestino, briga no carro KKKKKKK, dia memorável, também por estrar com o amor da minha vidaaa"
+    },
+
   ],
 
   presentes: [
@@ -80,6 +89,12 @@ const dados = {
       descricao: "LITERALMENTE CHOREIII COM ALGO TÃO PERFEITO VINDO DE UMA PESSOA TÃO PERFEITAAAA, nunca imaginei que seria tão amado por alguém, nunca imaginei que iria amar tanto alguém, e ainda bem que esse alguém é você"
     },
 
+    {
+      titulo: "Quarta Asa",
+      img: "imagens/objetos/gift10.jpeg",
+      descricao: "MEU PRIMEIRO LIVRO SEUUUU, amei o fato de voce saber qual eu queria simplesmente prestando atenção quando a gente ia na Leitura, mostra o quando voce se importa e ouve sempre o que eu digo.."
+    },
+
   ],
 
   mapas: [
@@ -101,6 +116,12 @@ const dados = {
       titulo: "Carta 2- Noites Brancas",
       img: "imagens/objetos/carta2.jpeg",
       texto: "A carta que eu coloquei no livro, junto com uma tentativa de desenhar o Banguela, sei que é simples, mas queria colocar algo que me lembrava de você."
+    },
+
+    {
+      titulo: "Carta 4- 3 meses",
+      img: "imagens/objetos/carta4.jpeg",
+      texto: "A coisa mais linda que ja recebi em toda minha, chorei e choro toda vez que leio, só mostra o quão perfeita, carinhosa e incrível você é <3.."
     }
 
   ],
@@ -111,6 +132,18 @@ const dados = {
       descricao: "Primeiro site que fiz pra você de muuuitosss outros, te amooo meu amor <3",
       link: "sites/carta.html"
     }
+  ],
+
+  musicas: [
+    {
+      titulo: "Hey Jude <3",
+      video: "videos/musicas/video1.mp4"
+    },
+
+    {
+      titulo: "Bohemian Rhapsody",
+      video: "videos/musicas/video2.mp4"
+    },
   ]
 
 };

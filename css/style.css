@@ -636,6 +636,70 @@ html {
   transform: scale(1.2);
 }
 
+/*--Modal Músicas--*/
+.musicas-modal-content {
+  width: min(900px, 92vw);
+  height: min(680px, 86vh);
+  overflow-y: auto;
+}
+
+.musicas-modal-title {
+  color: whitesmoke;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.musicas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.musica-card {
+  background: #3b3b3b;
+  border: 3px solid black;
+  border-radius: 18px;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.musica-card video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.musica-title {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.musicas-modal-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.musicas-modal-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.musicas-modal-content::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 10px;
+}
+
+.musicas-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #e0e0e0;
+}
+
 /* =============RESPONSIVIDADE============= */
 .mobile-left {
   justify-self: start;
@@ -766,6 +830,16 @@ html {
 
   .menu-grid.mapas {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .musicas-modal-content {
+    width: 92vw;
+    height: 82vh;
+    padding: 24px 18px;
+  }
+
+  .musicas-grid {
+    grid-template-columns: 1fr;
   }
 
   .drop-cheio {
