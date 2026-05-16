@@ -30,12 +30,12 @@ const dados = {
     },
 
     {
-      img: "imagens/objetos/foto3.jpeg",
-      img_album: "imagens/objetos/foto3.png",
-      data: "14/03/2026",
-      local: "Ozzy Hamburgueria",
-      motivo: "2º jantar com meus pais ",
-      texto: "Adoreiiii o dia, teve o uuuhul, as mágicas do snape nordestino, briga no carro KKKKKKK, dia memorável, também por estrar com o amor da minha vidaaa"
+      img: "imagens/objetos/foto4.jpeg",
+      img_album: "imagens/objetos/foto4.png",
+      data: "09/05/2026",
+      local: "Sua casaa",
+      motivo: "Dia das Mães",
+      texto: "AMEIII passar um dia friozinho com voceee, tiramos as melhores fotos esse dia eu acho, só foto aesthetic, TE AMOOO AMOR."
     },
 
   ],
@@ -121,7 +121,7 @@ const dados = {
     {
       titulo: "Carta 4- 3 meses",
       img: "imagens/objetos/carta4.jpeg",
-      texto: "A coisa mais linda que ja recebi em toda minha, chorei e choro toda vez que leio, só mostra o quão perfeita, carinhosa e incrível você é <3.."
+      texto: "A coisa mais linda que ja recebi em toda minha, chorei e choro toda vez que leio, só mostra o quão perfeita, carinhosa e incrível você é <3."
     }
 
   ],
